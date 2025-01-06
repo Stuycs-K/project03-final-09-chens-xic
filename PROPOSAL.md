@@ -16,6 +16,7 @@ The terminal will continuously prompt the user for a song title or playlist name
 
 This project will be using many of the topics we covered in class, such as processes. We will fork and exec to play music, and use stat to find information about the files (such file size). The user’s song lists and information about each song will be stored as text on files. The user will have to download a music player app.
 Nice to Have features:
+
 -Pause song
 
 -Skip song
@@ -23,3 +24,9 @@ Nice to Have features:
 # Intended pacing:
 
 A timeline with expected completion dates of parts of the project.
+
+1/7 - reconstruct and optimize music library
+
+1/9 - find music player and integrate with program
+
+1/13 - store user and song data on files, finish minimum viable product
