@@ -1,15 +1,13 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/Vh67aNdh)
-# PROJECT NAME HERE
+# Music Player
 
-### GROUP NAME HERE
+### Stacey and Cathleen
 
-Group Members Here
-       
+Stacey and Cathleen
+
 ### Project Description:
 
-Explain what is this project.
-  
-### Instructions:
+Our project will expand upon the previous music library project to include features that will play music and directly interact with music files. 	
 
-How does the user install/compile/run the program.
-How does the user interact with this program?
+
+### Instructions:
