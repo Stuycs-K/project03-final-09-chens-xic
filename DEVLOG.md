@@ -8,6 +8,8 @@ This document must be updated daily by EACH group member.
 Discussed project feature and organization with Stacey. Updated proposal and created repository. ~full period
 ### 2025-01-07 - Brief description
 Researched and tested out music players (mpg123). Figured out how to install and use.
+### 2025-01-08 - Brief description
+Implemented music library code from before. Created new method headers and began working on store song. Created new branch.
 
 ## Player 2
 
