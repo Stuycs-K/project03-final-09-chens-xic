@@ -5,6 +5,9 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <errno.h>
+#include <fcntl.h>
+#include <string.h>
+
 
 // adds the song specified to the queue
 void add_song(char* title){
@@ -17,18 +20,23 @@ void play(char *filename){
 }
 
 // stores song onto a file so user has a 'music history' file
+
 // creates/opens backup file
 // gets stat information of mp3
 // append song name and stat info into one string
 //write to file
 void store_song(char* song_title){
   int fd = open("/Backup", O_WRONLY | O_APPEND | O_CREAT, 0666);
+  if(fd < 0) printf("%s", strerror(errno));
 
-  struct dirent *entry;
+/*
+  char* songPath = catPath("/", song_title);
+  //struct dirent *entry;
   struct stat * stat_buffer;
   stat_buffer = malloc(sizeof(struct stat));
-
   stat(songPath, stat_buffer);
+  printf("song size: %ld\n", stat_buffer->st_size);
+  */
 }
 
 
