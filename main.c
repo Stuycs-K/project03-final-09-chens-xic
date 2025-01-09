@@ -3,10 +3,14 @@
 #include <unistd.h>
 #include "library.h"
 #include "player.h"
+#include "node.h"
 
 int main(){
+  struct song_node * lib = NULL;
+  add(lib, "artist", "songname");
+  print_library(lib);
   char* song = "Rome.mp3";
   printf("Now playing song %s...\n", song);
-  play(song);
+  // play(song);
   return 0;
 }
