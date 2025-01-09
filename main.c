@@ -6,6 +6,7 @@
 
 int main(){
   char* song = "Rome.mp3";
+  printf("Now playing song %s...\n", song);
   play(song);
   return 0;
 }
