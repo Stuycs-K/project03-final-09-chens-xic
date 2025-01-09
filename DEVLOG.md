@@ -4,12 +4,14 @@ This document must be updated daily by EACH group member.
 
 ## Cathleen Xi
 
-### 2025-01-06 - Brief description
+### 2025-01-06 - Project Proposal
 Discussed project feature and organization with Stacey. Updated proposal and created repository. ~full period
-### 2025-01-07 - Brief description
+### 2025-01-07 - Researched music player
 Researched and tested out music players (mpg123). Figured out how to install and use.
-### 2025-01-08 - Brief description
+### 2025-01-08 -Organizing
 Implemented music library code from before. Created new method headers and began working on store song. Created new branch.
+### 2025-01-08 - Writing store_song
+Worked on store_song method in player.c. Found mp3 byte size and tested with makefile
 
 ## Player 2
 
