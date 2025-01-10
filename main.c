@@ -6,7 +6,7 @@
 #include "node.h"
 
 int main(){
-  struct song_node * lib = NULL;
+  struct song_node ** lib = init();
   add(lib, "artist", "songname");
   print_library(lib);
   char* song = "Rome.mp3";
