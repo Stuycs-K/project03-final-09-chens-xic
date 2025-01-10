@@ -46,7 +46,8 @@ void store_song(char* song_title){
   sprintf(buff, "SONG: %s | SIZE: %ld\n", song_title, stat_buffer->st_size);
 
   printf("%s", buff);
-  write(fd, buff, sizeof(buff));
+  int bytesWritten = write(fd, buff, strlen(buff)+1);
+  printf("bytes written: %d, sizeof buff: %ld\n", bytesWritten, sizeof(buff));
 
 }
 
