@@ -11,6 +11,8 @@ int main(){
   print_library(lib);
   char* song = "Rome.mp3";
   printf("Now playing song %s...\n", song);
-  // play(song);
+
+
+  play(song);
   return 0;
 }

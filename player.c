@@ -28,7 +28,6 @@ struct song_node get_input(){
   fgets(buffer, 256, stdin);
   sscanf(buffer, "%s %s", &(song.title), &(song.artist));
   return song;
-
 }
 
 // parses playlist from music library result into char* array
