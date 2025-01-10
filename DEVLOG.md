@@ -24,5 +24,8 @@ Researched music player, downloaded mpg123. (class time + 30 minutes)
 ### 2025-01-08 -Started play() function
 Started writing the play() function and testing. Also tried downloading mpg123 at home, ran into error and tried fixing. (class time + 30 minutes)
 
-### 2025-01-09
+### 2025-01-09 - Worked on play() function
 Fixed play() function and started parsing. Fixed mpg123 home computer problem. (class time + 30 minutes)
+
+### 2025-01-10 - worked on get_input function
+Started a get_input function (class time)
