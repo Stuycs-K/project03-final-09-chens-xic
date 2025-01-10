@@ -42,6 +42,11 @@ void store_song(char* song_title){
   stat_buffer = malloc(sizeof(struct stat));
   stat(song_title, stat_buffer);
   printf("song size: %ld\n", stat_buffer->st_size);
+  char buff[100];
+  sprintf(buff, "SONG: %s | SIZE: %ld\n", song_title, stat_buffer->st_size);
+
+  printf("%s", buff);
+  write(fd, buff, sizeof(buff));
 
 }
 
