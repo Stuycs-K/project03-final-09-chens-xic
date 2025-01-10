@@ -19,4 +19,10 @@ Worked on store_song method in player.c. Found mp3 byte size and tested with mak
 Edited 'Technical Design' and 'How to Use' part of the proposal with Cathleen (about a full period). Created some skeleton files and started writing documentation (about 20 minutes).
 
 ### 2024-01-07 - Researched music player
-Researched music player, downloaded mpg123.
+Researched music player, downloaded mpg123. (class time + 30 minutes)
+
+### 2025-01-08 -Started play() function
+Started writing the play() function and testing. Also tried downloading mpg123 at home, ran into error and tried fixing. (class time + 30 minutes)
+
+### 2025-01-09
+Fixed play() function and started parsing. Fixed mpg123 home computer problem. (class time + 30 minutes)
