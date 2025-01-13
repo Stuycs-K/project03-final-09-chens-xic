@@ -29,3 +29,6 @@ Fixed play() function and started parsing. Fixed mpg123 home computer problem. (
 
 ### 2025-01-10 - worked on get_input function
 Started a get_input function (class time)
+
+### 2025-01-12 - worked on get_input function
+Worked on get_input to better utilize previous functions (20 minutes)
