@@ -32,3 +32,6 @@ Started a get_input function (class time)
 
 ### 2025-01-12 - worked on get_input function
 Worked on get_input to better utilize previous functions (20 minutes)
+
+### 2025-01-13 - worked on play_list function
+Worked on play_list function to play a playlist of songs from user input. Started forking (whole period)
