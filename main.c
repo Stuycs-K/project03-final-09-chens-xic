@@ -10,6 +10,9 @@ int main(){
   // if first command is -play, can loop through list and play songs
   struct song_node * list = NULL;
   list = get_input(list);
+  list = get_input(list);
+  list = get_input(list);
+  play_list(list);
   print_list(list);
 
   char* song = "Rome.mp3";

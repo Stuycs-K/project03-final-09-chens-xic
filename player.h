@@ -6,4 +6,5 @@ void play(char *filename);
 void store_song(char* title);
 void parse(char * playlist, char** dest);
 struct song_node * get_input(struct song_node * list);
+void play_list(struct song_node *list);
 #endif

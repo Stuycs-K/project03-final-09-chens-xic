@@ -22,6 +22,18 @@ void play(char *filename){
   execvp(args[0], args);
 }
 
+void play_list(struct song_node *list){
+  while (list->next != NULL) {
+      char filename[BSIZE];
+      sprintf(filename, "%s_by_%s.mp3", list->title, list->artist);
+      printf("%s\n", filename);
+      list = list->next;
+  }
+  char filename[BSIZE];
+  sprintf(filename, "%s_by_%s.mp3", list->title, list->artist);
+  printf("%s\n", filename);
+}
+
 // takes a song_node pointer as parameter (list), reads user input and makes it into a song node, which is added to list
 // user input should be in this format: song_name song_artist, song names and song artists should not have spaces
 // input added to library or to list?
