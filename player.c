@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <sys/wait.h>
 #include "player.h"
 #include "node.h"
 #include "library.h"
@@ -25,11 +26,22 @@ void play(char *filename){
 // plays the playlist built from user input
 void play_list(struct song_node *list){
   while (list->next != NULL) {
-      char filename[BSIZE];
-      sprintf(filename, "%s_by_%s.mp3", list->title, list->artist);
-      printf("Now playing song %s...\n", filename);
-      play(filename);
-      list = list->next;
+      pid_t p = fork();
+      if (p<0){
+        perror("Fork failed.\n");
+        exit(1);
+      }
+      else if (p==0){
+        char filename[BSIZE];
+        sprintf(filename, "%s_by_%s.mp3", list->title, list->artist);
+        printf("Now playing song %s...\n", filename);
+        play(filename);
+      }
+      else{
+        int status;
+        wait(&status);
+        list = list->next;
+      }
   }
   char filename[BSIZE];
   sprintf(filename, "%s_by_%s.mp3", list->title, list->artist);
