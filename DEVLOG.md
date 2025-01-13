@@ -13,7 +13,7 @@ Implemented music library code from before. Created new method headers and began
 ### 2025-01-08 - Writing store_song
 Worked on store_song method in player.c. Found mp3 byte size and tested with makefile
 
-## Player 2
+## Stacey Chen
 
 ### 2025-01-06 - Worked on project proposal
 Edited 'Technical Design' and 'How to Use' part of the proposal with Cathleen (about a full period). Created some skeleton files and started writing documentation (about 20 minutes).
