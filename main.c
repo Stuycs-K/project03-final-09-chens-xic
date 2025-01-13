@@ -15,10 +15,10 @@ int main(){
   play_list(list);
   print_list(list);
 
-  char* song = "Rome.mp3";
-  printf("Now playing song %s...\n", song);
+  //char* song = "Rome.mp3";
+  //printf("Now playing song %s...\n", song);
 
 
-  play(song);
+  //play(song);
   return 0;
 }

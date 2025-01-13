@@ -11,7 +11,7 @@ void add_song(char* title){
 
 }
 
-// plays the playlist by using execvp and the mpg123 library(?)
+// plays a single song by using execvp and the mpg123 library(?)
 void play(char *filename){
   char* args[4];
   char* program = "mpg123";
@@ -22,16 +22,19 @@ void play(char *filename){
   execvp(args[0], args);
 }
 
+// plays the playlist built from user input
 void play_list(struct song_node *list){
   while (list->next != NULL) {
       char filename[BSIZE];
       sprintf(filename, "%s_by_%s.mp3", list->title, list->artist);
-      printf("%s\n", filename);
+      printf("Now playing song %s...\n", filename);
+      play(filename);
       list = list->next;
   }
   char filename[BSIZE];
   sprintf(filename, "%s_by_%s.mp3", list->title, list->artist);
-  printf("%s\n", filename);
+  play(filename);
+  printf("Now playing song %s...\n", filename);
 }
 
 // takes a song_node pointer as parameter (list), reads user input and makes it into a song node, which is added to list
@@ -42,6 +45,7 @@ struct song_node * get_input(struct song_node * list){
   char artist[BSIZE];
   char title[BSIZE];
   printf("Enter a song name and song artist in the format \"song_name song_artist\": ");
+  // catch an error if song is not on playlist
   fgets(buffer, BSIZE, stdin);
   sscanf(buffer, "%s %s", title, artist);
   return insert_front(list,artist,title);
