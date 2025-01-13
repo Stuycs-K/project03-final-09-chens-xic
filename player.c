@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "player.h"
+#include "node.h"
+#include "library.h"
+#define BSIZE 256
 
 // adds the song specified to the queue
 void add_song(char* title){
@@ -19,15 +22,16 @@ void play(char *filename){
   execvp(args[0], args);
 }
 
-// reads user input and makes it into a song node
+// takes a song_node pointer as parameter (list), reads user input and makes it into a song node, which is added to list
 // user input should be in this format: song_name song_artist, song names and song artists should not have spaces
-struct song_node get_input(){
-  char buffer[256];
-  struct song_node song;
+struct song_node * get_input(struct song_node * list){
+  char buffer[BSIZE];
+  char artist[BSIZE];
+  char title[BSIZE];
   printf("Enter a song name and song artist in the format \"song_name song_artist\": ");
-  fgets(buffer, 256, stdin);
-  sscanf(buffer, "%s %s", &(song.title), &(song.artist));
-  return song;
+  fgets(buffer, BSIZE, stdin);
+  sscanf(buffer, "%s %s", title, artist);
+  return insert_front(list,artist,title);
 }
 
 // parses playlist from music library result into char* array

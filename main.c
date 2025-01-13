@@ -6,9 +6,12 @@
 #include "node.h"
 
 int main(){
-  struct song_node ** lib = init();
-  add(lib, "artist", "songname");
-  print_library(lib);
+  // can call get_input when first command is -add?
+  // if first command is -play, can loop through list and play songs
+  struct song_node * list = NULL;
+  list = get_input(list);
+  print_list(list);
+
   char* song = "Rome.mp3";
   printf("Now playing song %s...\n", song);
 
