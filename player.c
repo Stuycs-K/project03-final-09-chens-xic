@@ -46,6 +46,13 @@ void play_list(struct song_node *list){
   }
 }
 
+// keeps asking user to put one of the commands: play add remove(?) save(?) and calls following function
+void prompt_input(){
+  char buffer[BSIZE];
+  printf("Input a command: ");
+  fgets(buffer, BSIZE, stdin);
+}
+
 // takes a song_node pointer as parameter (list), reads user input and makes it into a song node, which is added to list
 // user input should be in this format: song_name song_artist, song names and song artists should not have spaces
 // input added to library or to list?
