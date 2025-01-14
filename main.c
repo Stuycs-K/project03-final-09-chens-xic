@@ -20,5 +20,6 @@ int main(){
 
 
   //play(song);
+  free(list);
   return 0;
 }
