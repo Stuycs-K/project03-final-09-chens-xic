@@ -39,8 +39,14 @@ void play_list(struct song_node *list){
       }
       else{
         int status;
-        wait(&status);
-        list = list->next;
+        pid_t child = wait(&status);
+        if (child == -1) {
+          perror("Wait failed.\n");
+          exit(1);
+        }
+        if (WIFEXITED(status)){
+          list = list->next;
+        }
       }
   }
   char filename[BSIZE];
