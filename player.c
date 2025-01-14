@@ -25,7 +25,7 @@ void play(char *filename){
 
 // plays the playlist built from user input
 void play_list(struct song_node *list){
-  while (list->next != NULL) {
+  while (list != NULL) {
       pid_t p = fork();
       if (p<0){
         perror("Fork failed.\n");
@@ -49,10 +49,6 @@ void play_list(struct song_node *list){
         }
       }
   }
-  char filename[BSIZE];
-  sprintf(filename, "%s_by_%s.mp3", list->title, list->artist);
-  play(filename);
-  printf("Now playing song %s...\n", filename);
 }
 
 // takes a song_node pointer as parameter (list), reads user input and makes it into a song node, which is added to list
