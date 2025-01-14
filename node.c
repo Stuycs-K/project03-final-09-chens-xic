@@ -13,7 +13,8 @@ struct song_node *createnode(char *artist, char *title, struct song_node *next) 
     return x;
 }
 void print(struct song_node * m){
-    printf("%s , %s", m->artist, m->title);
+  //modified from original lab
+    printf("%s by %s", m->title, m->artist);
 }
 
 
@@ -29,6 +30,17 @@ void print_list(struct song_node *list) {
     printf(" {");
     print(list);
     printf("} ]");
+}
+
+void print_playlist(struct song_node *list) {
+  int i = 1;
+    while (list != NULL) {
+        printf(" [%d] ", i);
+        i++;
+        print(list);
+        printf("\n");
+        list = list->next;
+    }
 }
 
 struct song_node *insert_front(struct song_node *list, char *artist, char *title) {

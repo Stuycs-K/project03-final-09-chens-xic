@@ -13,7 +13,7 @@ int main(){
   list = get_input(list);
   list = get_input(list);
   play_list(list);
-  print_list(list);
+  print_playlist(list);
 
   //char* song = "Rome.mp3";
   //printf("Now playing song %s...\n", song);

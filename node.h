@@ -7,6 +7,7 @@ void print(struct song_node * m);
 struct song_node* createnode(char *artist, char *title, struct song_node *next);
 
 void print_list(struct song_node *list);
+void print_playlist(struct song_node *list);
 struct song_node * insert_front(struct song_node * list, char *artist, char* title);
 struct song_node * free_list(struct song_node * list);
 struct song_node * remove_node_by_index(struct song_node * list, int index);
