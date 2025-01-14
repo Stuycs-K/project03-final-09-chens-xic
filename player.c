@@ -7,11 +7,6 @@
 #include "library.h"
 #define BSIZE 256
 
-// adds the song specified to the queue
-void add_song(char* title){
-
-}
-
 // plays a single song by using execvp and the mpg123 library(?)
 void play(char *filename){
   char* args[4];
@@ -63,11 +58,6 @@ struct song_node * get_input(struct song_node * list){
   fgets(buffer, BSIZE, stdin);
   sscanf(buffer, "%s %s", title, artist);
   return insert_front(list,artist,title);
-}
-
-// parses playlist from music library result into char* array
-void parse(char * playlist, char** dest){
-
 }
 
 // stores song onto a file so user has a 'music history' file
