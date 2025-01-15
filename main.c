@@ -9,15 +9,15 @@ int main(){
   // can call get_input when first command is -add?
   // if first command is -play, can loop through list and play songs
   //cmdargc, if -add,
-  while (1){
-    
-  }
 
   struct song_node * list = NULL;
-  list = get_input(list);
-  list = get_input(list);
-  list = get_input(list);
-  play_list(list);
+  while (1){
+    prompt_input(list);
+  }
+  // list = get_input(list);
+  // list = get_input(list);
+  // list = get_input(list);
+  // play_list(list);
   print_playlist(list);
 
   //char* song = "Rome.mp3";
