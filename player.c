@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
+#include <string.h>
 #include "player.h"
 #include "node.h"
 #include "library.h"
@@ -47,10 +48,19 @@ void play_list(struct song_node *list){
 }
 
 // keeps asking user to put one of the commands: play add remove(?) save(?) and calls following function
-void prompt_input(){
+void prompt_input(struct song_node *list){
   char buffer[BSIZE];
-  printf("Input a command: ");
+  printf("Input a command (play   add): ");
   fgets(buffer, BSIZE, stdin);
+  if (!strcmp(buffer, "add")){
+    get_input(list);
+  }
+  else if (!strcmp(buffer, "play")){
+    play_list(list);
+  }
+  else{
+    printf("Please input a valid command.\n");
+  }
 }
 
 // takes a song_node pointer as parameter (list), reads user input and makes it into a song node, which is added to list
