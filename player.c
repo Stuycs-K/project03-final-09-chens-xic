@@ -48,22 +48,23 @@ void play_list(struct song_node *list){
 }
 
 // keeps asking user to put one of the commands: play add remove(?) save(?) and calls following function
-void prompt_input(struct song_node *list){
+struct song_node * prompt_input(struct song_node *list){
   char buffer[BSIZE];
   printf("Input a command (play   add    show): ");
   fgets(buffer, BSIZE, stdin);
   if (!strcmp(buffer, "add\n")){
-    get_input(list);
+    return get_input(list);
   }
-  else if (!strcmp(buffer, "play\n")){ // does not work
+  else if (!strcmp(buffer, "play\n")){
     play_list(list);
   }
-  else if (!strcmp(buffer, "show\n")){ // does not work
+  else if (!strcmp(buffer, "show\n")){
     print_playlist(list);
   }
   else{
     printf("Please input a valid command.\n");
   }
+  return list;
 }
 
 // takes a song_node pointer as parameter (list), reads user input and makes it into a song node, which is added to list

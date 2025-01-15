@@ -12,7 +12,7 @@ int main(){
 
   struct song_node * list = NULL;
   while (1){
-    prompt_input(list);
+    list = prompt_input(list);
   }
   // list = get_input(list);
   // list = get_input(list);

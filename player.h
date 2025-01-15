@@ -5,5 +5,5 @@ void play(char *filename);
 void store_song(char* title);
 struct song_node * get_input(struct song_node * list);
 void play_list(struct song_node *list);
-void prompt_input(struct song_node *list);
+struct song_node * prompt_input(struct song_node *list);
 #endif
