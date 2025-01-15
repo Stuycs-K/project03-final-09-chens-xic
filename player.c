@@ -123,3 +123,20 @@ char* catPath(char *PATH, char *entryName){
   //printf("%s\n", buffer);
     return buffer;
 }
+
+//plays the user old list from backup file
+// malloc new song_node list
+// read from Backup, parse string into nodes and add to list
+//call play_list with new list.
+void play_history(){
+  struct song_node * list = NULL;
+  int backup = open("Backup", O_RDONLY, 0666);
+  char buff[100];
+
+  int bytesRead;
+  while(bytesRead = read(backup, buff, 100)){
+    if(bytesRead == -1) printf("%s", strerror(errno));
+
+    list = insert_front(list, artist, title);
+  }
+}
