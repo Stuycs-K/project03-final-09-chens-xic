@@ -32,17 +32,23 @@ void play(char *filename){
 // append song name and stat info into one string
 //write to file
 void store_song(char* song_title){
-  int fd = open("/Backup", O_WRONLY | O_APPEND | O_CREAT, 0666);
-  if(fd < 0) printf("%s", strerror(errno));
+  int fd = open("Backup", O_WRONLY | O_APPEND | O_CREAT, 0666);
+  if(fd < 0) printf("%s\n", strerror(errno));
 
-/*
-  char* songPath = catPath("/", song_title);
+
+  //songPath = catPath("/MUSICFOLDER/", song_title); for when we move music into folder
   //struct dirent *entry;
   struct stat * stat_buffer;
   stat_buffer = malloc(sizeof(struct stat));
-  stat(songPath, stat_buffer);
+  stat(song_title, stat_buffer);
   printf("song size: %ld\n", stat_buffer->st_size);
-  */
+  char buff[100];
+  sprintf(buff, "SONG: %s | SIZE: %ld\n", song_title, stat_buffer->st_size);
+
+  printf("%s", buff);
+  int bytesWritten = write(fd, buff, strlen(buff)+1);
+  printf("bytes written: %d, sizeof buff: %ld\n", bytesWritten, sizeof(buff));
+
 }
 
 

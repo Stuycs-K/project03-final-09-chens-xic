@@ -4,7 +4,7 @@
 #include "library.h"
 #include "player.h"
 int main(){
-  store_song("test.txt");
+  store_song("London.mp3");
 
   return 0;
 }

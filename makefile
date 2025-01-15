@@ -14,3 +14,4 @@ player.o: player.c player.h
 clean:
 	rm *.o
 	rm program
+	rm Backup
