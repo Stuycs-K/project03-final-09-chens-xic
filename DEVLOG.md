@@ -35,3 +35,6 @@ Worked on get_input to better utilize previous functions (20 minutes)
 
 ### 2025-01-13 - worked on play_list function
 Worked on play_list function to play a playlist of songs from user input. Started forking + finished forking at home (whole period + 30 min)
+
+### 2025-01-14 - worked on print_playlist and prompt_input function
+Worked on print_playlist function to print out the current playlist and worked on prompt_input function (whole period)
