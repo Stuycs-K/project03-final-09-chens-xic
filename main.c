@@ -11,14 +11,12 @@ int main(){
   //cmdargc, if -add,
 
   struct song_node * list = NULL;
-  while (1){
-    list = prompt_input(list);
-  }
-  // list = get_input(list);
-  // list = get_input(list);
-  // list = get_input(list);
-  // play_list(list);
+  // while (1){
+  //   list = prompt_input(list);
+  // }
+
   print_playlist(list);
+  store_song("Rome_by_Italy.mp3");
 
   //char* song = "Rome.mp3";
   //printf("Now playing song %s...\n", song);

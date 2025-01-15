@@ -12,8 +12,9 @@
 #include "library.h"
 #define BSIZE 256
 
-
-// plays a single song by using execvp and the mpg123 library(?)
+// takes a string (the name of the song file to be played) as an argument
+// plays a single song by using execvp and mpg123
+// void
 void play(char *filename){
   char* args[4];
   char* program = "mpg123";
@@ -24,7 +25,9 @@ void play(char *filename){
   execvp(args[0], args);
 }
 
-// plays the playlist built from user input
+// takes a pointer to the beginning of the song_node list (the playlist built from user input) as argument
+// plays the playlist built from user input by forking and calling the play() function
+// void
 void play_list(struct song_node *list){
   while (list != NULL) {
       pid_t p = fork();
@@ -52,7 +55,9 @@ void play_list(struct song_node *list){
   }
 }
 
+//  takes a pointer to the beginning of the song_node list (the playlist built from user input) as argument
 // keeps asking user to put one of the commands: play add remove(?) save(?) and calls following function
+// returns a pointer to the beginning of the song_node list
 struct song_node * prompt_input(struct song_node *list){
   char buffer[BSIZE];
   printf("Input a command (play   add    show): ");
@@ -72,9 +77,9 @@ struct song_node * prompt_input(struct song_node *list){
   return list;
 }
 
-// takes a song_node pointer as parameter (list), reads user input and makes it into a song node, which is added to list
+// takes a song_node pointer as argument (list), reads user input and makes it into a song node, which is added to list
 // user input should be in this format: song_name song_artist, song names and song artists should not have spaces
-// input added to library or to list?
+// returns a pointer to the beginning of the song_node list
 struct song_node * get_input(struct song_node * list){
   char buffer[BSIZE];
   char artist[BSIZE];
