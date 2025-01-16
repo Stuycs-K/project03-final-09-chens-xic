@@ -12,6 +12,8 @@
 #include "library.h"
 #define BSIZE 256
 
+//group ID 6
+
 // takes a string (the name of the song file to be played) as an argument
 // plays a single song by using execvp and mpg123
 // void
@@ -63,6 +65,7 @@ struct song_node * prompt_input(struct song_node *list){
   printf("Input a command (play   add    show): ");
   fgets(buffer, BSIZE, stdin);
   if (!strcmp(buffer, "add\n")){
+    valid_songs();
     return get_input(list);
   }
   else if (!strcmp(buffer, "play\n")){
@@ -131,9 +134,25 @@ char* catPath(char *PATH, char *entryName){
 
 // prints valid songs
 void valid_songs(){
-  char* args[2];
+  char* args[3];
   args[0] = "ls";
   args[1] = "./song_lib";
   args[2] = NULL;
-  execvp(args[0], args);
+  pid_t p = fork();
+  if (p < 0){
+    perror("Fork failed.\n");
+    exit(1);
+  }
+  if (p==0){
+    printf("Song files available: \n\t");
+    execvp(args[0], args);
+  }
+  else{
+    int status;
+    pid_t child = wait(&status);
+    if (child == -1) {
+      perror("Wait failed.\n");
+      exit(1);
+    }
+  }
 }
