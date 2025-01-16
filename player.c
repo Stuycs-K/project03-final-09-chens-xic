@@ -128,3 +128,12 @@ char* catPath(char *PATH, char *entryName){
   //printf("%s\n", buffer);
     return buffer;
 }
+
+// prints valid songs
+void valid_songs(){
+  char* args[2];
+  args[0] = "ls";
+  args[1] = "./song_lib";
+  args[2] = NULL;
+  execvp(args[0], args);
+}

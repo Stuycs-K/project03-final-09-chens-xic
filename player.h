@@ -7,4 +7,5 @@ char* catPath(char *PATH, char *entryName);
 struct song_node * get_input(struct song_node * list);
 void play_list(struct song_node *list);
 struct song_node * prompt_input(struct song_node *list);
+void valid_songs();
 #endif
