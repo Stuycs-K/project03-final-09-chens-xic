@@ -92,21 +92,28 @@ struct song_node * get_input(struct song_node * list){
 // gets stat information of mp3
 // append song name and stat info into one string
 //write to file
-void store_song(char* song_title){
+void store_song(struct song_node * song){
   int fd = open("Backup", O_WRONLY | O_APPEND | O_CREAT, 0666);
   if(fd < 0) printf("%s\n", strerror(errno));
 
 
   //songPath = catPath("/MUSICFOLDER/", song_title); for when we move music into folder
   //struct dirent *entry;
+  char artist[BSIZE];
+  strcpy(song->artist, artist);
+  char title[BSIZE];
+  strcpy(song->title, title);
+  char filename[BSIZE];
+  sprintf(filename, "%s_by_%s.mp3", title, artist);
+
   struct stat * stat_buffer;
   stat_buffer = malloc(sizeof(struct stat));
-  stat(song_title, stat_buffer);
+  stat(filename, stat_buffer);
   printf("song size: %ld\n", stat_buffer->st_size);
-  char buff[100];
-  sprintf(buff, "SONG: %s | SIZE: %ld\n", song_title, stat_buffer->st_size);
+  char buff[BSIZE];
+  sprintf(buff, "%s ,%s ,%ld\n", title, artist, stat_buffer->st_size);
 
-  printf("%s", buff);
+  printf("%s\n", buff);
   int bytesWritten = write(fd, buff, strlen(buff)+1);
   printf("bytes written: %d, sizeof buff: %ld\n", bytesWritten, sizeof(buff));
 
@@ -128,6 +135,7 @@ char* catPath(char *PATH, char *entryName){
 // malloc new song_node list
 // read from Backup, parse string into nodes and add to list
 //call play_list with new list.
+/*
 void play_history(){
   struct song_node * list = NULL;
   int backup = open("Backup", O_RDONLY, 0666);
@@ -140,3 +148,4 @@ void play_history(){
     list = insert_front(list, artist, title);
   }
 }
+*/
