@@ -37,8 +37,8 @@ void play_list(struct song_node *list){
       }
       else if (p==0){
         char filename[BSIZE];
-        sprintf(filename, "%s_by_%s.mp3", list->title, list->artist);
-        printf("Now playing song %s...\n", filename);
+        sprintf(filename, "./song_lib/%s_by_%s.mp3", list->title, list->artist);
+        printf("Now playing song %s_by_%s.mp3...\n", list->title, list->artist);
         play(filename);
       }
       else{
