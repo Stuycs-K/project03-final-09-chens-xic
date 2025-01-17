@@ -55,7 +55,7 @@ void play_list(struct song_node *list){
 // keeps asking user to put one of the commands: play add remove(?) save(?) and calls following function
 struct song_node * prompt_input(struct song_node *list){
   char buffer[BSIZE];
-  printf("Input a command (play   add    show): ");
+  printf("Input a command (play   add    show    history): ");
   fgets(buffer, BSIZE, stdin);
   if (!strcmp(buffer, "add\n")){
     return get_input(list);
@@ -65,6 +65,9 @@ struct song_node * prompt_input(struct song_node *list){
   }
   else if (!strcmp(buffer, "show\n")){
     print_playlist(list);
+  }
+  else if(!strcmp(buffer, "history")){
+    play_history(list);
   }
   else{
     printf("Please input a valid command.\n");
@@ -139,17 +142,18 @@ char* catPath(char *PATH, char *entryName){
 // malloc new song_node list
 // read from Backup, parse string into nodes and add to list
 //call play_list with new list.
-/*
-void play_history(){
-  struct song_node * list = NULL;
-  int backup = open("Backup", O_RDONLY, 0666);
+
+void play_history(struct song_node * list){
+  FILE backup = fopen("Backup", O_RDONLY, 0666);
   char buff[100];
 
-  int bytesRead;
-  while(bytesRead = read(backup, buff, 100)){
-    if(bytesRead == -1) printf("%s", strerror(errno));
+  while(fgets(buff, 100, backup) != NULL){
+    char artist[100]; char title[100];
+    title = strsep(buff, "|");
+    artist = strsep(buff, " ");
+    printf("parsed out title: %s, artist: %s\n", title, artist);
+
 
     list = insert_front(list, artist, title);
   }
 }
-*/
