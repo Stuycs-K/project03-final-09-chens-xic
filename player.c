@@ -58,7 +58,7 @@ void play_list(struct song_node *list){
 }
 
 //  takes a pointer to the beginning of the song_node list (the playlist built from user input) as argument
-// keeps asking user to put one of the commands: play add remove show and calls following function
+// keeps asking user to put one of the commands: play add remove show, and calls the respective function
 // returns a pointer to the beginning of the song_node list
 struct song_node * prompt_input(struct song_node *list){
   char buffer[BSIZE];
@@ -93,7 +93,6 @@ struct song_node * get_input(struct song_node * list){
   char artist[BSIZE];
   char title[BSIZE];
   printf("Enter a song name and song artist in the format \"song_name song_artist\": ");
-  // catch an error if song is not on playlist
   fgets(buffer, BSIZE, stdin);
   sscanf(buffer, "%s %s", title, artist);
   return insert_front(list,artist,title);
@@ -165,6 +164,9 @@ void valid_songs(){
   }
 }
 
+// takes a song_node pointer as argument (list), reads user input removes the song from the list
+// user input should be in this format: song_name song_artist, song names and song artists should not have spaces
+// returns a pointer to the beginning of the song_node list
 struct song_node * remove_from_queue(struct song_node * list){
   char buffer[BSIZE];
   char artist[BSIZE];
