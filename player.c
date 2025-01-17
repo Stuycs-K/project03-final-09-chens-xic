@@ -132,7 +132,8 @@ char* catPath(char *PATH, char *entryName){
     return buffer;
 }
 
-// prints valid songs
+// void function, takes no argument
+// prints the song files contained in our music library by forking and execvping ls
 void valid_songs(){
   char* args[3];
   args[0] = "ls";
@@ -144,7 +145,8 @@ void valid_songs(){
     exit(1);
   }
   if (p==0){
-    printf("Song files available: \n\t");
+    printf("\033[0;35m"); // makes text purple
+    printf("Song files available: \n");
     execvp(args[0], args);
   }
   else{
@@ -154,5 +156,6 @@ void valid_songs(){
       perror("Wait failed.\n");
       exit(1);
     }
+    printf("\033[0m"); // resets text color
   }
 }
