@@ -44,3 +44,6 @@ Add documentation for some functions and also updated proposal to fit with how w
 
 ### 2025-01-16 - moved songs into folder and started valid_songs() function
 Moved song files into a folder called song_lib and started a valid_songs() function to display possible songs to add
+
+### 2025-01-17 - add more songs and remove function
+Added new song files and worked on a remove function to remove a song from the playlist
