@@ -39,5 +39,8 @@ Worked on play_list function to play a playlist of songs from user input. Starte
 ### 2025-01-14 - worked on print_playlist and prompt_input function
 Worked on print_playlist function to print out the current playlist and worked on prompt_input function (whole period + 30 min)
 
-### 2025-01-14 - updated documentation and proposal document
+### 2025-01-15 - updated documentation and proposal document
 Add documentation for some functions and also updated proposal to fit with how we are currently organizing our program
+
+### 2025-01-16 - moved songs into folder and started valid_songs() function
+Moved song files into a folder called song_lib and started a valid_songs() function to display possible songs to add
