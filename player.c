@@ -76,7 +76,9 @@ struct song_node * prompt_input(struct song_node *list){
   }
   else if (!strcmp(buffer, "remove\n")){
     printf("Current playlist:\n");
+    printf("\033[0;32m"); // makes text green
     print_playlist(list);
+    printf("\033[0m"); // resets text color
     return remove_from_queue(list);
   }
   else{
@@ -149,7 +151,7 @@ void valid_songs(){
     exit(1);
   }
   if (p==0){
-    printf("\033[0;35m"); // makes text purple
+    printf("\033[0;32m"); // makes text green
     printf("Song files available: \n");
     execvp(args[0], args);
   }
