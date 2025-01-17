@@ -58,11 +58,11 @@ void play_list(struct song_node *list){
 }
 
 //  takes a pointer to the beginning of the song_node list (the playlist built from user input) as argument
-// keeps asking user to put one of the commands: play add remove(?) save(?) and calls following function
+// keeps asking user to put one of the commands: play add remove show and calls following function
 // returns a pointer to the beginning of the song_node list
 struct song_node * prompt_input(struct song_node *list){
   char buffer[BSIZE];
-  printf("Input a command (play   add    show): ");
+  printf("Input a command (play   add    show   remove): ");
   fgets(buffer, BSIZE, stdin);
   if (!strcmp(buffer, "add\n")){
     valid_songs();
@@ -73,6 +73,11 @@ struct song_node * prompt_input(struct song_node *list){
   }
   else if (!strcmp(buffer, "show\n")){
     print_playlist(list);
+  }
+  else if (!strcmp(buffer, "remove\n")){
+    printf("Current playlist:\n");
+    print_playlist(list);
+    return remove_from_queue(list);
   }
   else{
     printf("Please input a valid command.\n");
@@ -158,4 +163,14 @@ void valid_songs(){
     }
     printf("\033[0m"); // resets text color
   }
+}
+
+struct song_node * remove_from_queue(struct song_node * list){
+  char buffer[BSIZE];
+  char artist[BSIZE];
+  char title[BSIZE];
+  printf("To remove a song, enter the song name and song artist in the format \"song_name song_artist\": ");
+  fgets(buffer, BSIZE, stdin);
+  sscanf(buffer, "%s %s", title, artist);
+  return remove_by_song(list, artist, title);
 }
