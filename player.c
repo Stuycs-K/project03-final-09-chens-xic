@@ -66,7 +66,7 @@ struct song_node * prompt_input(struct song_node *list){
   else if (!strcmp(buffer, "show\n")){
     print_playlist(list);
   }
-  else if(!strcmp(buffer, "history")){
+  else if(!strcmp(buffer, "history\n")){
     play_history(list);
   }
   else{
@@ -144,16 +144,20 @@ char* catPath(char *PATH, char *entryName){
 //call play_list with new list.
 
 void play_history(struct song_node * list){
-  FILE backup = fopen("Backup", O_RDONLY, 0666);
+  FILE *backup = fopen("Backup", "r");
+  char *strbuff;
   char buff[100];
+  strbuff = buff;
 
   while(fgets(buff, 100, backup) != NULL){
-    char artist[100]; char title[100];
-    title = strsep(buff, "|");
-    artist = strsep(buff, " ");
+    printf("inside while\n");
+    char *artist; char *title;
+    printf("about to strsep\n");
+    title = strsep(&strbuff, "|");
+    artist = strsep(&strbuff, " ");
     printf("parsed out title: %s, artist: %s\n", title, artist);
 
-
+    printf("adding to playlist\n");
     list = insert_front(list, artist, title);
   }
 }
