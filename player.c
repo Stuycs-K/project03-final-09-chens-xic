@@ -31,6 +31,9 @@ void play(char *filename)
 // plays the playlist built from user input
 void play_list(struct song_node *list)
 {
+  if (list ==NULL){
+    printf("You currently have no songs in your playlist.\n");
+  }
   while (list != NULL)
   {
     pid_t p = fork();
@@ -168,11 +171,6 @@ char *catPath(char *PATH, char *entryName)
 void play_history()
 {
   FILE *backup = fopen("Backup", "r");
-  if (backup == NULL)
-  {
-    printf("No previous history\n");
-    return;
-  }
   char buff[100];
   struct song_node *list = NULL;
   while (fgets(buff, 100, backup))
