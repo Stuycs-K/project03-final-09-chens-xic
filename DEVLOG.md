@@ -10,12 +10,22 @@ Discussed project feature and organization with Stacey. Updated proposal and cre
 Researched and tested out music players (mpg123). Figured out how to install and use. (full period)
 ### 2025-01-08 -Organizing
 Implemented music library code from before. Created new method headers and began working on store song. Created new branch. (full period)
-### 2025-01-08 - Writing store_song
+### 2025-01-09 - Writing store_song
 Worked on store_song method in player.c. Found mp3 byte size and tested with makefile (full period)
-### 2025-01-09 - Debugging store_song
+### 2025-01-10 - Debugging store_song
 Found bug with reading bytes to file. Fixed bug (full period)
+### 2025-01-14 - Testing
+Testing Backup file with main program (full period)
 ### 2025-01-15 - Writing play_history
 Merged code with Stacey and discussed next functions. Integrated function into main and started writing new method. (full period)
+### 2025-01-16 - Writing play_history
+Finished writing play_history (full period)
+### 2025-01-17 - Integrating with main program
+Added new features to main and tested with program (full period)
+### 2025-01-18 - Debugging play_history
+Fixed issue with looping and reading input. Changed parameters and method organization (1 hour)
+### 2025-01-19
+Finalizing program and merging code. Preparing video presentation
 
 ## Stacey Chen
 
