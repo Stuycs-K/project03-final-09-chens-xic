@@ -11,3 +11,4 @@ Our project will expand upon the previous music library project to include featu
 
 
 ### Instructions:
+Install mpg123 before running the music player program. Run make compile and make run to run program. Ctrl-C to exit. Make clean will clear history as well. 
