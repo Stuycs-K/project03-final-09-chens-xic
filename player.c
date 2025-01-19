@@ -168,6 +168,11 @@ char *catPath(char *PATH, char *entryName)
 void play_history()
 {
   FILE *backup = fopen("Backup", "r");
+  if (backup == NULL)
+  {
+    printf("No previous history\n");
+    return;
+  }
   char buff[100];
   struct song_node *list = NULL;
   while (fgets(buff, 100, backup))
