@@ -132,10 +132,10 @@ void store_song(char *title, char *artist)
 
   char filename[BSIZE];
   sprintf(filename, "%s_by_%s.mp3", title, artist);
-  printf("%s\n", filename);
+  //  printf("%s\n", filename);
   char *songPath;
   songPath = catPath("song_lib/", filename);
-  printf("%s\n", songPath);
+  // printf("%s\n", songPath);
   struct stat *stat_buffer;
   stat_buffer = malloc(sizeof(struct stat));
   stat(songPath, stat_buffer);
@@ -169,19 +169,17 @@ void play_history()
 {
   FILE *backup = fopen("Backup", "r");
   char buff[100];
-  int count = 0;
   struct song_node *list = NULL;
   while (fgets(buff, 100, backup))
   {
-    count++;
     long int bytes;
     char title[100];
     char artist[100];
     // printf("about to sscanf\n");
     sscanf(buff, "%s %s %ld", title, artist, &bytes);
-    printf("[%d]%s %s\n", count, title, artist);
     list = insert_front(list, artist, title);
   }
+  print_playlist(list);
   play_list(list);
 }
 
