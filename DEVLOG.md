@@ -7,11 +7,15 @@ This document must be updated daily by EACH group member.
 ### 2025-01-06 - Project Proposal
 Discussed project feature and organization with Stacey. Updated proposal and created repository. ~full period
 ### 2025-01-07 - Researched music player
-Researched and tested out music players (mpg123). Figured out how to install and use.
+Researched and tested out music players (mpg123). Figured out how to install and use. (full period)
 ### 2025-01-08 -Organizing
-Implemented music library code from before. Created new method headers and began working on store song. Created new branch.
+Implemented music library code from before. Created new method headers and began working on store song. Created new branch. (full period)
 ### 2025-01-08 - Writing store_song
-Worked on store_song method in player.c. Found mp3 byte size and tested with makefile
+Worked on store_song method in player.c. Found mp3 byte size and tested with makefile (full period)
+### 2025-01-09 - Debugging store_song
+Found bug with reading bytes to file. Fixed bug (full period)
+### 2025-01-15 - Writing play_history
+Merged code with Stacey and discussed next functions. Integrated function into main and started writing new method. (full period)
 
 ## Stacey Chen
 
