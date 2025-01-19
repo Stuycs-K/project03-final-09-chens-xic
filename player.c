@@ -79,7 +79,7 @@ struct song_node *prompt_input(struct song_node *list)
   }
   else if (!strcmp(buffer, "history\n"))
   {
-    play_history(list);
+    play_history();
   }
   else
   {
@@ -157,12 +157,14 @@ char *catPath(char *PATH, char *entryName)
 //  read from Backup, parse string into nodes and add to list
 // call play_list with new list.
 
-void play_history(struct song_node *list)
+void play_history()
 {
   FILE *backup = fopen("Backup", "r");
   char *strbuff;
   char buff[100];
   strbuff = buff;
+
+  struct song_node *list = NULL;
   while (fgets(buff, 100, backup))
   {
     //  printf("inside while\n");
