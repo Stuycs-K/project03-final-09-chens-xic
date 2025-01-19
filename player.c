@@ -117,13 +117,6 @@ void store_song(char *title, char *artist)
     printf("%s\n", strerror(errno));
 
   // songPath = catPath("/MUSICFOLDER/", song_title); for when we move music into folder
-  // struct dirent *entry;
-  /*
-  char artist[BSIZE];
-  strcpy(song->artist, artist);
-  char title[BSIZE];
-  strcpy(song->title, title);
-  */
   char filename[BSIZE];
   sprintf(filename, "%s_by_%s.mp3", title, artist);
 
@@ -151,25 +144,22 @@ char *catPath(char *PATH, char *entryName)
   return buffer;
 }
 
-// plays the user old list from backup file
-//  malloc new song_node list
-//  read from Backup, parse string into nodes and add to list
-// call play_list with new list.
-
+// plays songs on Backup file
 void play_history()
 {
   FILE *backup = fopen("Backup", "r");
   char buff[100];
-
+  int count = 0;
   struct song_node *list = NULL;
   while (fgets(buff, 100, backup))
   {
+    count++;
     long int bytes;
     char title[100];
     char artist[100];
     // printf("about to sscanf\n");
     sscanf(buff, "%s %s %ld", title, artist, &bytes);
-    printf("%s %s\n", title, artist);
+    printf("[%d]%s %s\n", count, title, artist);
     list = insert_front(list, artist, title);
   }
   play_list(list);
