@@ -12,7 +12,7 @@
 #include "library.h"
 #define BSIZE 256
 
-//group ID 6
+// group ID 6
 
 // takes a string (the name of the song file to be played) as an argument
 // plays a single song by using execvp and mpg123
@@ -70,7 +70,8 @@ struct song_node *prompt_input(struct song_node *list)
   char buffer[BSIZE];
   printf("Input a command (play   add    show    remove    history): ");
   fgets(buffer, BSIZE, stdin);
-  if (!strcmp(buffer, "add\n")){
+  if (!strcmp(buffer, "add\n"))
+  {
     valid_songs();
     return get_input(list);
   }
@@ -82,7 +83,8 @@ struct song_node *prompt_input(struct song_node *list)
   {
     print_playlist(list);
   }
-  else if (!strcmp(buffer, "remove\n")){
+  else if (!strcmp(buffer, "remove\n"))
+  {
     printf("Current playlist:\n");
     printf("\033[0;32m"); // makes text green
     print_playlist(list);
@@ -128,13 +130,15 @@ void store_song(char *title, char *artist)
   if (fd < 0)
     printf("%s\n", strerror(errno));
 
-  // songPath = catPath("/MUSICFOLDER/", song_title); for when we move music into folder
   char filename[BSIZE];
   sprintf(filename, "%s_by_%s.mp3", title, artist);
-
+  printf("%s\n", filename);
+  char *songPath;
+  songPath = catPath("song_lib/", filename);
+  printf("%s\n", songPath);
   struct stat *stat_buffer;
   stat_buffer = malloc(sizeof(struct stat));
-  stat(filename, stat_buffer);
+  stat(songPath, stat_buffer);
   //  printf("song size: %ld\n", stat_buffer->st_size);
   char buff[BSIZE];
   sprintf(buff, "%s %s %ld\n", title, artist, stat_buffer->st_size);
@@ -146,12 +150,16 @@ void store_song(char *title, char *artist)
 
 char *catPath(char *PATH, char *entryName)
 {
-  int size = strlen(PATH) + strlen(entryName);
+  int size = strlen(PATH) + strlen(entryName) + 1;
   char str[size];
-  char *buffer = str;
+  char *buffer = (char *)malloc(size);
+  if (buffer == NULL)
+  {
+    fprintf(stderr, "Memory allocation failed\n");
+    return NULL;
+  }
   strcpy(buffer, PATH);
-  strncat(buffer, "/", strlen(buffer) + 2);
-  strncat(buffer, entryName, size + 2);
+  strncat(buffer, entryName, strlen(entryName));
   // printf("%s\n", buffer);
   return buffer;
 }
@@ -179,25 +187,30 @@ void play_history()
 
 // void function, takes no argument
 // prints the song files contained in our music library by forking and execvping ls
-void valid_songs(){
-  char* args[3];
+void valid_songs()
+{
+  char *args[3];
   args[0] = "ls";
   args[1] = "./song_lib";
   args[2] = NULL;
   pid_t p = fork();
-  if (p < 0){
+  if (p < 0)
+  {
     perror("Fork failed.\n");
     exit(1);
   }
-  if (p==0){
+  if (p == 0)
+  {
     printf("\033[0;35m"); // makes text purple
     printf("Song files available: \n");
     execvp(args[0], args);
   }
-  else{
+  else
+  {
     int status;
     pid_t child = wait(&status);
-    if (child == -1) {
+    if (child == -1)
+    {
       perror("Wait failed.\n");
       exit(1);
     }
@@ -208,7 +221,8 @@ void valid_songs(){
 // takes a song_node pointer as argument (list), reads user input removes the song from the list
 // user input should be in this format: song_name song_artist, song names and song artists should not have spaces
 // returns a pointer to the beginning of the song_node list
-struct song_node * remove_from_queue(struct song_node * list){
+struct song_node *remove_from_queue(struct song_node *list)
+{
   char buffer[BSIZE];
   char artist[BSIZE];
   char title[BSIZE];
