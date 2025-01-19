@@ -100,7 +100,6 @@ struct song_node *get_input(struct song_node *list)
   // catch an error if song is not on playlist
   fgets(buffer, BSIZE, stdin);
   sscanf(buffer, "%s %s", title, artist);
-
   store_song(title, artist);
   return insert_front(list, artist, title);
 }
@@ -133,10 +132,10 @@ void store_song(char *title, char *artist)
   stat(filename, stat_buffer);
   //  printf("song size: %ld\n", stat_buffer->st_size);
   char buff[BSIZE];
-  sprintf(buff, "%ld %s %s\n", stat_buffer->st_size, title, artist);
+  sprintf(buff, "%s %s %ld\n", title, artist, stat_buffer->st_size);
 
   //  printf("%s\n", buff);
-  int bytesWritten = write(fd, buff, strlen(buff) + 1);
+  int bytesWritten = write(fd, buff, strlen(buff));
   //  printf("bytes written: %d sizeof buff: %ld\n", bytesWritten, sizeof(buff));
 }
 
@@ -160,37 +159,18 @@ char *catPath(char *PATH, char *entryName)
 void play_history()
 {
   FILE *backup = fopen("Backup", "r");
-  char *strbuff;
   char buff[100];
-  strbuff = buff;
 
   struct song_node *list = NULL;
   while (fgets(buff, 100, backup))
   {
-    //  printf("inside while\n");
-    strbuff[strlen(strbuff) - 1] = '\0';
     long int bytes;
     char title[100];
     char artist[100];
     // printf("about to sscanf\n");
-    sscanf(buff, "%ld %s %s", &bytes, title, artist);
-    /*
-    char *artist;
-    char *title;
-    // printf("about to strsep\n");
-    title = strsep(&strbuff, "|");
-    if (title == NULL)
-    {
-      break;
-    }
-    artist = strbuff;
-    */
+    sscanf(buff, "%s %s %ld", title, artist, &bytes);
     printf("%s %s\n", title, artist);
-    // printf("%s\n", buff);
-
-    // printf("adding to playlist\n");
     list = insert_front(list, artist, title);
-    // printf("after added to playlist\n");
   }
   play_list(list);
 }
