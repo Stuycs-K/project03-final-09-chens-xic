@@ -12,6 +12,8 @@
 #include "library.h"
 #define BSIZE 256
 
+//group ID 6
+
 // takes a string (the name of the song file to be played) as an argument
 // plays a single song by using execvp and mpg123
 // void
@@ -40,8 +42,8 @@ void play_list(struct song_node *list)
     else if (p == 0)
     {
       char filename[BSIZE];
-      sprintf(filename, "%s_by_%s.mp3", list->title, list->artist);
-      printf("Now playing song %s...\n", filename);
+      sprintf(filename, "./song_lib/%s_by_%s.mp3", list->title, list->artist);
+      printf("Now playing song %s_by_%s.mp3...\n", list->title, list->artist);
       play(filename);
     }
     else
@@ -62,14 +64,14 @@ void play_list(struct song_node *list)
 }
 
 //  takes a pointer to the beginning of the song_node list (the playlist built from user input) as argument
-// keeps asking user to put one of the commands: play add remove(?) save(?) and calls following function
+// keeps asking user to put one of the commands: play add show remove history and calls following function
 struct song_node *prompt_input(struct song_node *list)
 {
   char buffer[BSIZE];
-  printf("Input a command (play   add    show    history): ");
+  printf("Input a command (play   add    show    remove    history): ");
   fgets(buffer, BSIZE, stdin);
-  if (!strcmp(buffer, "add\n"))
-  {
+  if (!strcmp(buffer, "add\n")){
+    valid_songs();
     return get_input(list);
   }
   else if (!strcmp(buffer, "play\n"))
@@ -79,6 +81,13 @@ struct song_node *prompt_input(struct song_node *list)
   else if (!strcmp(buffer, "show\n"))
   {
     print_playlist(list);
+  }
+  else if (!strcmp(buffer, "remove\n")){
+    printf("Current playlist:\n");
+    printf("\033[0;32m"); // makes text green
+    print_playlist(list);
+    printf("\033[0m"); // resets text color
+    return remove_from_queue(list);
   }
   else if (!strcmp(buffer, "history\n"))
   {
@@ -166,4 +175,45 @@ void play_history()
     list = insert_front(list, artist, title);
   }
   play_list(list);
+}
+
+// void function, takes no argument
+// prints the song files contained in our music library by forking and execvping ls
+void valid_songs(){
+  char* args[3];
+  args[0] = "ls";
+  args[1] = "./song_lib";
+  args[2] = NULL;
+  pid_t p = fork();
+  if (p < 0){
+    perror("Fork failed.\n");
+    exit(1);
+  }
+  if (p==0){
+    printf("\033[0;35m"); // makes text purple
+    printf("Song files available: \n");
+    execvp(args[0], args);
+  }
+  else{
+    int status;
+    pid_t child = wait(&status);
+    if (child == -1) {
+      perror("Wait failed.\n");
+      exit(1);
+    }
+    printf("\033[0m"); // resets text color
+  }
+}
+
+// takes a song_node pointer as argument (list), reads user input removes the song from the list
+// user input should be in this format: song_name song_artist, song names and song artists should not have spaces
+// returns a pointer to the beginning of the song_node list
+struct song_node * remove_from_queue(struct song_node * list){
+  char buffer[BSIZE];
+  char artist[BSIZE];
+  char title[BSIZE];
+  printf("To remove a song, enter the song name and song artist in the format \"song_name song_artist\": ");
+  fgets(buffer, BSIZE, stdin);
+  sscanf(buffer, "%s %s", title, artist);
+  return remove_by_song(list, artist, title);
 }
