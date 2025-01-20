@@ -64,3 +64,6 @@ Added new song files and worked on a remove function to remove a song from the p
 
 ### 2025-01-19 - merging and video
 Merged branches and started video (2 hours)
+
+### 2025-01-20 - final touches & documentation updates
+Freed memory in sighandler and updated documentation (1 hour)

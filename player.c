@@ -111,7 +111,7 @@ struct song_node *prompt_input(struct song_node *list)
 
 // takes a song_node pointer as argument (list), reads user input and makes it into a song node, which is added to list
 // user input should be in this format: song_name song_artist, song names and song artists should not have spaces
-// input added to library or to list?
+// returns a pointer to the beginning of the song_node list
 struct song_node *get_input(struct song_node *list)
 {
   char buffer[BSIZE];
