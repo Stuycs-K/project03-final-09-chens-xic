@@ -28,7 +28,9 @@ void play(char *filename)
   execvp(args[0], args);
 }
 
-// plays the playlist built from user input
+// takes a pointer to the beginning of the song_node list (the playlist built from user input) as argument
+// plays the playlist built from user input by forking and calling the play() function
+// void
 void play_list(struct song_node *list)
 {
   if (list == NULL)
@@ -69,6 +71,7 @@ void play_list(struct song_node *list)
 
 //  takes a pointer to the beginning of the song_node list (the playlist built from user input) as argument
 // keeps asking user to put one of the commands: play add show remove history and calls following function
+// returns a pointer to the beginning of the song_node list
 struct song_node *prompt_input(struct song_node *list)
 {
   char buffer[BSIZE];

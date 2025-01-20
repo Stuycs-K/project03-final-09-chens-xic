@@ -34,6 +34,9 @@ void print_list(struct song_node *list) {
 
 void print_playlist(struct song_node *list) {
   int i = 1;
+  if (list == NULL){
+    printf("Playlist is empty.\n");
+  }
     while (list != NULL) {
         printf(" [%d] ", i);
         i++;
