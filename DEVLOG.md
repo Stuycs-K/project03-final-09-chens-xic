@@ -54,13 +54,13 @@ Worked on play_list function to play a playlist of songs from user input. Starte
 Worked on print_playlist function to print out the current playlist and worked on prompt_input function (whole period + 30 min)
 
 ### 2025-01-15 - updated documentation and proposal document
-Add documentation for some functions and also updated proposal to fit with how we are currently organizing our program
+Add documentation for some functions and also updated proposal to fit with how we are currently organizing our program (whole period)
 
 ### 2025-01-16 - moved songs into folder and started valid_songs() function
-Moved song files into a folder called song_lib and started a valid_songs() function to display possible songs to add
+Moved song files into a folder called song_lib and started a valid_songs() function to display possible songs to add (whole period)
 
 ### 2025-01-17 - add more songs and remove function
-Added new song files and worked on a remove function to remove a song from the playlist
+Added new song files and worked on a remove function to remove a song from the playlist (whole period)
 
 ### 2025-01-19 - merging and video
-Merged branches and started video
+Merged branches and started video (2 hours)

@@ -9,6 +9,8 @@ Stacey and Cathleen
 
 Our project will expand upon the previous music library project to include features that will play music and directly interact with music files. 	
 
+### Video Link:
+https://drive.google.com/file/d/1Gj0Pzv8L7iUkpCHZsCiJ4EaZ18xZpn9p/view?usp=sharing
 
 ### Instructions:
 Install mpg123 before running the music player program. Run make compile and make run to run program. Ctrl-C to exit. Make clean will clear history as well. 
