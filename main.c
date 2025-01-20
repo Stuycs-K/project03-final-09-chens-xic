@@ -6,11 +6,13 @@
 #include "player.h"
 #include "node.h"
 
+struct song_node *list = NULL;
 void sighandler(int signo)
 {
   if (signo == SIGINT)
   {
     printf("\nClosing music player...\n");
+    free_list(list);
     exit(0);
   }
 }
@@ -18,7 +20,7 @@ void sighandler(int signo)
 int main()
 {
   signal(SIGINT, sighandler);
-  struct song_node *list = NULL;
+
   while (1)
   {
     list = prompt_input(list);
@@ -26,6 +28,6 @@ int main()
   // print_playlist(list);
 
   // play(song);
-  free(list);
+
   return 0;
 }
